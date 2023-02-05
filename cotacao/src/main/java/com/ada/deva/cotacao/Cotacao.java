@@ -20,9 +20,9 @@ public class Cotacao {
     private BigDecimal valor_cotacao;
     private LocalDateTime dataSolicitacao;
 
-    public Cotacao(String tipo_moeda, BigDecimal valor_cotacao, LocalDateTime dataSolicitacao) {
-        this.tipo_moeda = tipo_moeda;
-        this.valor_cotacao = valor_cotacao;
+    public Cotacao(String tipoMoeda, BigDecimal valorCotacao, LocalDateTime dataSolicitacao) {
+        this.tipo_moeda = tipoMoeda;
+        this.valor_cotacao = valorCotacao;
         this.dataSolicitacao = dataSolicitacao;
 
     }
