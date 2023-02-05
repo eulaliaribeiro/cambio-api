@@ -45,17 +45,17 @@ public class OrdemDeCompraController {
         if (ordemDeCompra == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informada uma ordem de compra válida");
         }
-        if (ordemDeCompra.getCpf() == null || ordemDeCompra.getCpf().isBlank()) {
+        if (ordemDeCompra.getCpf_cliente() == null || ordemDeCompra.getCpf_cliente().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informado um CPF válido");
         }
-        if (ordemDeCompra.getIdCompra() == null || ordemDeCompra.getIdCompra().isBlank()) {
-            ordemDeCompra.setIdCompra(UUID.randomUUID().toString());
+        if (ordemDeCompra.getId_compra() == null || ordemDeCompra.getId_compra().isBlank()) {
+            ordemDeCompra.setId_compra(UUID.randomUUID().toString());
         }
         try {
             service.add(ordemDeCompra.toEntity());
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro desconhecido");
         }
-        return ResponseEntity.created(URI.create("/api/ordemDeCompra/" + ordemDeCompra.getIdCompra())).build();
+        return ResponseEntity.created(URI.create("/api/ordemDeCompra/" + ordemDeCompra.getId_compra())).build();
     }
 }

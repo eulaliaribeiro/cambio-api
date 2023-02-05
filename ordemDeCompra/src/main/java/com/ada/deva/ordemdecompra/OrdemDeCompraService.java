@@ -25,13 +25,14 @@ public class OrdemDeCompraService {
         OrdemDeCompraDTO ordemDeCompra1 = ordemDeCompraClient.getCotacao(tipoMoeda);
 
         OrdemDeCompraDTO ordemDeCompraDTO = new OrdemDeCompraDTO(
-                ordemDeCompra.getIdCompra(),
-                ordemDeCompra.getCpf(),
-                ordemDeCompra1.getTipoMoeda(),
-                ordemDeCompra.getValorMoedaEstrangeira(),
-                ordemDeCompra1.getValorCotacao(),
+                ordemDeCompra.getId_compra(),
+                ordemDeCompra.getId_cliente(),
+                ordemDeCompra.getCpf_cliente(),
+                ordemDeCompra1.getTipo_moeda(),
+                ordemDeCompra.getValor_moeda_estrangeira(),
+                ordemDeCompra1.getValor_cotacao(),
                 ordemDeCompra1.getDataSolicitacao(),
-                ordemDeCompra.getNumeroAgencia());
+                ordemDeCompra.getNumero_agencia_retirada());
 
         return Optional.of(ordemDeCompraDTO);
 

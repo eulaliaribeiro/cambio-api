@@ -26,7 +26,7 @@ public class OrdemDeCompraDTO {
     private String numero_agencia_retirada;
 
 
-    public OrdemDeCompraDTO(String id, String cpf, String tipoMoeda, Double valorMoedaEstrangeira, BigDecimal valorCotacao, LocalDateTime dataSolicitacao, String numeroAgencia) {
+    public OrdemDeCompraDTO(String id_compra, String id_cliente, String cpf_cliente, String tipo_moeda, Double valor_moeda_estrangeira, BigDecimal valor_cotacao, LocalDateTime dataSolicitacao, String numero_agencia_retirada) {
     }
 
     public static OrdemDeCompraDTO of(OrdemDeCompra ordemDeCompra){
