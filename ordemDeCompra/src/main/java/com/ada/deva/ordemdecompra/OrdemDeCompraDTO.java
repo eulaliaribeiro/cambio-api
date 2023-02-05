@@ -10,16 +10,20 @@ import java.time.LocalDateTime;
 @Data
 @RequiredArgsConstructor
 public class OrdemDeCompraDTO {
-    private String idCompra;
+    private String id_compra;
+    
 
-    private String idCliente;
-    private String cpf;
-    private String tipoMoeda;
-    private Double valorMoedaEstrangeira;
+    private String id_cliente;
+    
+    private String cpf_cliente;
+    
+    private String tipo_moeda;
+    
+    private Double valor_moeda_estrangeira;
 
-    private BigDecimal valorCotacao;
+    private BigDecimal valor_cotacao;
     private LocalDateTime dataSolicitacao;
-    private String numeroAgencia;
+    private String numero_agencia_retirada;
 
 
     public OrdemDeCompraDTO(String id, String cpf, String tipoMoeda, Double valorMoedaEstrangeira, BigDecimal valorCotacao, LocalDateTime dataSolicitacao, String numeroAgencia) {
@@ -27,21 +31,21 @@ public class OrdemDeCompraDTO {
 
     public static OrdemDeCompraDTO of(OrdemDeCompra ordemDeCompra){
         OrdemDeCompraDTO dto = new OrdemDeCompraDTO();
-        dto.setIdCompra(ordemDeCompra.getId());
-        dto.setCpf(ordemDeCompra.getCPF());
-        dto.setTipoMoeda(ordemDeCompra.getTipoMoeda());
-        dto.setValorMoedaEstrangeira(ordemDeCompra.getValorMoedaEstrangeira());
-        dto.setNumeroAgencia(ordemDeCompra.getNumeroAgencia());
+        dto.setId_compra(ordemDeCompra.getId());
+        dto.setId_cliente(ordemDeCompra.getCPF());
+        dto.setTipo_moeda(ordemDeCompra.getTipoMoeda());
+        dto.setValor_moeda_estrangeira(ordemDeCompra.getValorMoedaEstrangeira());
+        dto.setNumero_agencia_retirada(ordemDeCompra.getNumeroAgencia());
         return dto;
     }
 
     public OrdemDeCompra toEntity(){
         OrdemDeCompra ordemDeCompra = new OrdemDeCompra();
-        ordemDeCompra.setId(idCompra);
-        ordemDeCompra.setCPF(cpf);
-        ordemDeCompra.setTipoMoeda(tipoMoeda);
-        ordemDeCompra.setValorMoedaEstrangeira(valorMoedaEstrangeira);
-        ordemDeCompra.setNumeroAgencia(numeroAgencia);
+        ordemDeCompra.setId(id_compra);
+        ordemDeCompra.setCPF(cpf_cliente);
+        ordemDeCompra.setTipoMoeda(tipo_moeda);
+        ordemDeCompra.setValorMoedaEstrangeira(valor_moeda_estrangeira);
+        ordemDeCompra.setNumeroAgencia(numero_agencia_retirada);
         return ordemDeCompra;
     }
 

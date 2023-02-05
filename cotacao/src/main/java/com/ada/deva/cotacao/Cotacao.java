@@ -16,13 +16,13 @@ import java.time.LocalDateTime;
 
 @Data
 public class Cotacao {
-    private String tipoMoeda;
-    private BigDecimal valorCotacao;
+    private String tipo_moeda;
+    private BigDecimal valor_cotacao;
     private LocalDateTime dataSolicitacao;
 
     public Cotacao(String tipoMoeda, BigDecimal valorCotacao, LocalDateTime dataSolicitacao) {
-        this.tipoMoeda = tipoMoeda;
-        this.valorCotacao = valorCotacao;
+        this.tipo_moeda = tipoMoeda;
+        this.valor_cotacao = valorCotacao;
         this.dataSolicitacao = dataSolicitacao;
 
     }
