@@ -12,11 +12,14 @@ public class ClienteDTO {
     private String estadoCivil;
     private String sexo;
 
+    private String conta;
+
     public static ClienteDTO of(Cliente cliente) {
         ClienteDTO dto = new ClienteDTO(cliente.getCpf(), cliente.getNome());
         dto.dataNascimento = cliente.getDataNascimento();
         dto.estadoCivil = cliente.getEstadoCivil();
         dto.sexo = cliente.getSexo();
+        dto.conta = cliente.getConta();
         return dto;
     }
 

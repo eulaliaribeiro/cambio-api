@@ -23,6 +23,14 @@ public class ClienteController {
         Optional<Cliente> encontrado = service.getById(cpf);
         Cliente entity = encontrado.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizado um cliente com o CPF informado!"));
         return ResponseEntity.ok(ClienteDTO.of(entity));
+    }@GetMapping("{conta}")
+    public ResponseEntity<ClienteDTO> getByConta(@PathVariable String conta) {
+        if (conta == null || conta.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Atenção: A conta não foi informado!");
+        }
+        Optional<Cliente> encontrado = service.getByConta(conta);
+        Cliente entity = encontrado.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizado um cliente com a Conta informada!"));
+        return ResponseEntity.ok(ClienteDTO.of(entity));
     }
 
     @PostMapping
@@ -39,8 +47,6 @@ public class ClienteController {
         }
         try {
             service.adicionar(cliente.toEntity());
-        } catch (EntidadeDuplicadaException e) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Já existe um cliente com o CPF informado.");
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro desconhecido.");
         }

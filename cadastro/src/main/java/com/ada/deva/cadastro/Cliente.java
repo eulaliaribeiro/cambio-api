@@ -16,5 +16,6 @@ public class Cliente {
     private LocalDate dataNascimento;
     private String estadoCivil;
     private String sexo;
+    private String conta;
 
 }
