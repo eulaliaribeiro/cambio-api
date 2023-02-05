@@ -1,10 +1,12 @@
 package com.ada.deva.cadastro;
 
+import com.ada.deva.comum.EntidadeDuplicadaException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
 
 import java.net.URI;
 import java.util.Optional;
@@ -47,8 +49,10 @@ public class ClienteController {
         }
         try {
             service.adicionar(cliente.toEntity());
+        } catch (EntidadeDuplicadaException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Já existe uma pessoa com o CPF informado");
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro desconhecido.");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro desconhecido");
         }
         return ResponseEntity.created(URI.create("/api/cliente/" + clearCpf)).build();
     }

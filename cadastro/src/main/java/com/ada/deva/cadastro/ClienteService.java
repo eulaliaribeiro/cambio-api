@@ -1,5 +1,6 @@
 package com.ada.deva.cadastro;
 
+import com.ada.deva.comum.EntidadeDuplicadaException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,10 @@ public class ClienteService {
         return Optional.ofNullable(repository.findByConta(conta));
     }
 
-    public void adicionar(Cliente entity){
+    public void adicionar(Cliente entity) throws EntidadeDuplicadaException {
+        if (repository.existsById(entity.getCpf())) {
+            throw new EntidadeDuplicadaException();
+        }
         repository.save(entity);
     }
 }
