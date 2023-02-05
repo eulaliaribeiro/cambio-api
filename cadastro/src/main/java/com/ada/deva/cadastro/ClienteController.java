@@ -26,7 +26,7 @@ public class ClienteController {
     }@GetMapping("{conta}")
     public ResponseEntity<ClienteDTO> getByConta(@PathVariable String conta) {
         if (conta == null || conta.isBlank()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Atenção: A conta não foi informado!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Atenção: A conta não foi informada!");
         }
         Optional<Cliente> encontrado = service.getByConta(conta);
         Cliente entity = encontrado.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizado um cliente com a Conta informada!"));
