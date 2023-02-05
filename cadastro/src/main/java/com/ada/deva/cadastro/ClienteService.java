@@ -1,7 +1,6 @@
 package com.ada.deva.cadastro;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
