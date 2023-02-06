@@ -42,7 +42,7 @@ public class OrdemDeCompraDTO {
         ordemDeCompra.setCPF(cpf_cliente);
         ordemDeCompra.setTipoMoeda(tipo_moeda);
         ordemDeCompra.setValorMoedaEstrangeira(valor_moeda_estrangeira);
-        ordemDeCompra.setNumeroAgencia(numero_agencia_retirada);
+        ordemDeCompra.setConta(numero_agencia_retirada);
         return ordemDeCompra;
     }
 

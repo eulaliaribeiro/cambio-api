@@ -5,7 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -17,7 +16,7 @@ public class OrdemDeCompra {
     private String CPF;
     private String tipoMoeda;
     private double valorMoedaEstrangeira;
-    private String numeroAgencia;
+    private String conta;
 
 //    public String getId() {
 //        return id;

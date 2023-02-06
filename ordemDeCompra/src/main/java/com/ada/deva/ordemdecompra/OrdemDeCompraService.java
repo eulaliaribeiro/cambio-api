@@ -4,6 +4,7 @@ package com.ada.deva.ordemdecompra;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -44,19 +45,18 @@ public class OrdemDeCompraService {
 //    }
 
     public OrdemDeCompraDTO salvarEmDTO(OrdemDeCompra ordemDeCompra){
-        repository.save(ordemDeCompra);
-        String tipoMoeda = clienteClient.getCadastro(ordemDeCompra.getNumeroAgencia()).getTipo_moeda();
-        Double valorCotacao = cotacaoClient.getCotacao(ordemDeCompra.getTipoMoeda()).getValor_cotacao();
+        ClienteDTO cliente = clienteClient.getCadastro(ordemDeCompra.getConta());
+        Double valorCotacao = cotacaoClient.getCotacao(ordemDeCompra.getTipoMoeda()).getBid();
         ordemDeCompraDTO.setId_compra(String.valueOf(new Random().nextLong()));
-        ordemDeCompraDTO.setId_cliente(String.valueOf(clienteClient.getCadastro(ordemDeCompra.getNumeroAgencia()).getId_cliente()));
+        ordemDeCompraDTO.setId_cliente(cliente.getCpf());
         ordemDeCompraDTO.setCpf_cliente(ordemDeCompra.getCPF());
-        ordemDeCompraDTO.setDataSolicitacao(LocalDateTime.from(Instant.now()));
-        ordemDeCompraDTO.setTipo_moeda(tipoMoeda);
+        ordemDeCompraDTO.setDataSolicitacao(LocalDateTime.now());
+        ordemDeCompraDTO.setTipo_moeda(ordemDeCompra.getTipoMoeda());
         ordemDeCompraDTO.setValor_moeda_estrangeira(ordemDeCompra.getValorMoedaEstrangeira());
-        ordemDeCompraDTO.setNumero_agencia_retirada(ordemDeCompra.getNumeroAgencia());
+        ordemDeCompraDTO.setNumero_agencia_retirada(ordemDeCompra.getConta());
         ordemDeCompraDTO.setValor_cotacao(valorCotacao);
         if(ordemDeCompra.getTipoMoeda().equalsIgnoreCase("USD") || ordemDeCompra.getTipoMoeda().equalsIgnoreCase("EUR")){
-            ordemDeCompraDTO.setValor_total_operacao(valorCotacao*(ordemDeCompra.getValorMoedaEstrangeira()));
+            ordemDeCompraDTO.setValor_total_operacao(valorCotacao * ordemDeCompra.getValorMoedaEstrangeira());
         }
         return ordemDeCompraDTO;
     }

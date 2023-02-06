@@ -1,10 +1,16 @@
-package com.ada.deva.cotacao;
+package com.ada.deva.ordemdecompra;
 
-import lombok.Data;
+import lombok.*;
+import lombok.extern.jackson.Jacksonized;
 
 import java.math.BigDecimal;
 
 @Data
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Jacksonized
 public class CotacaoDTO {
 
     private String code;

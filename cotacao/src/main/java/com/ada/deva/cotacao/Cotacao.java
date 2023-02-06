@@ -2,8 +2,6 @@ package com.ada.deva.cotacao;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -20,7 +18,7 @@ public class Cotacao {
     private BigDecimal valor_cotacao;
     private LocalDateTime dataSolicitacao;
 
-    public Cotacao(String tipoMoeda, BigDecimal valorCotacao, LocalDateTime dataSolicitacao) {
+    public Cotacao(String tipoMoeda, Double valorCotacao, LocalDateTime dataSolicitacao) {
         this.tipo_moeda = tipoMoeda;
         this.valor_cotacao = valorCotacao;
         this.dataSolicitacao = dataSolicitacao;
