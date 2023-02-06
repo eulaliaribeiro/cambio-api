@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequestMapping("/api/cliente")
 public class ClienteController {
     private final ClienteService service;
-    @GetMapping("{cpf}")
+    @GetMapping("cpf/{cpf}")
     public ResponseEntity<ClienteDTO> getByCpf(@PathVariable String cpf) {
         if (cpf == null || cpf.isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Atenção: O CPF não foi informado!");
@@ -25,7 +25,7 @@ public class ClienteController {
         Optional<Cliente> encontrado = service.getById(cpf);
         Cliente entity = encontrado.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizado um cliente com o CPF informado!"));
         return ResponseEntity.ok(ClienteDTO.of(entity));
-    }@GetMapping("{conta}")
+    }@GetMapping("conta/{conta}")
     public ResponseEntity<ClienteDTO> getByConta(@PathVariable String conta) {
         if (conta == null || conta.isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Atenção: A conta não foi informada!");
