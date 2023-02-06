@@ -45,7 +45,8 @@ public class OrdemDeCompraController {
         if (ordemDeCompra == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informada uma ordem de compra válida");
         }
-        if (ordemDeCompra.getCpf_cliente() == null || ordemDeCompra.getCpf_cliente().isBlank()) {
+        String clearCpf = ordemDeCompra.getCpf_cliente().replaceAll("[\\.-]", "");
+        if (clearCpf.isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informado um CPF válido");
         }
         if (ordemDeCompra.getId_compra() == null || ordemDeCompra.getId_compra().isBlank()) {
