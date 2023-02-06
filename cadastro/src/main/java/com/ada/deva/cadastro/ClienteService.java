@@ -2,12 +2,14 @@ package com.ada.deva.cadastro;
 
 import com.ada.deva.comum.EntidadeDuplicadaException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
+@Component
 public class ClienteService {
     private final ClienteRepository repository;
 

@@ -29,7 +29,7 @@ public class ClienteDTO {
         Cliente entity = new Cliente();
         entity.setCpf(cpf);
         entity.setNome(nome);
-        entity.setDataNascimento(formatarData(String.valueOf(dataNascimento)));
+        entity.setDataNascimento(String.valueOf(dataNascimento));
         entity.setEstadoCivil(estadoCivil);
         entity.setSexo(sexo);
         entity.setConta(conta);
