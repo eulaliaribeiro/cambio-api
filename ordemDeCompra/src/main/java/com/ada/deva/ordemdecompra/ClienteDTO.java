@@ -1,6 +1,5 @@
 package com.ada.deva.ordemdecompra;
 
-import com.ada.deva.cadastro.Cliente;
 import lombok.*;
 import lombok.extern.jackson.Jacksonized;
 

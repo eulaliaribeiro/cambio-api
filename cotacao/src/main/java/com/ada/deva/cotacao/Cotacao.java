@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Data
 public class Cotacao {
     private String tipo_moeda;
-    private BigDecimal valor_cotacao;
+    private Double valor_cotacao;
     private LocalDateTime dataSolicitacao;
 
     public Cotacao(String tipoMoeda, Double valorCotacao, LocalDateTime dataSolicitacao) {
