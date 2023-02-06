@@ -21,7 +21,8 @@ public class OrdemDeCompraDTO {
     
     private Double valor_moeda_estrangeira;
 
-    private BigDecimal valor_cotacao;
+    private Double valor_cotacao;
+    private Double valor_total_operacao;
     private LocalDateTime dataSolicitacao;
     private String numero_agencia_retirada;
 

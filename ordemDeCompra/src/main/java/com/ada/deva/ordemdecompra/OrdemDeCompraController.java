@@ -42,17 +42,14 @@ public class OrdemDeCompraController {
 
     @PostMapping
     public ResponseEntity<Void> add(@RequestBody OrdemDeCompraDTO ordemDeCompra) {
-        if (ordemDeCompra == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informada uma ordem de compra válida");
+        if(ordemDeCompra.getNumero_agencia_retirada() == null || ordemDeCompra.getValor_moeda_estrangeira() == null || ordemDeCompra.getCpf_cliente() == null || ordemDeCompra.getTipo_moeda() == null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Todos os campos precisam ser preenchidos");
         }
-        String clearCpf = ordemDeCompra.getCpf_cliente().replaceAll("[\\.-]", "");
-        if (clearCpf.isBlank()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informado um CPF válido");
-        }
-        if (ordemDeCompra.getId_compra() == null || ordemDeCompra.getId_compra().isBlank()) {
-            ordemDeCompra.setId_compra(UUID.randomUUID().toString());
+        if(!ordemDeCompra.getTipo_moeda().toUpperCase().equals("USD") && !ordemDeCompra.getTipo_moeda().toUpperCase().equals("EUR")){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Moeda incorreta. Escolha USD ou EUR");
         }
         try {
+            ordemDeCompra.setValor_total_operacao(ordemDeCompra.getValor_cotacao()*ordemDeCompra.getValor_moeda_estrangeira());
             service.add(ordemDeCompra.toEntity());
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro desconhecido");
