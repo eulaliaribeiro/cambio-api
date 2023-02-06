@@ -1,7 +1,6 @@
 package com.ada.deva.ordemdecompra;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -9,7 +8,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class OrdemDeCompraService {
-    private final CrudRepository<OrdemDeCompra, String> repository;
+    private final OrdemDeCompraRepository repository;
 
     public Optional<OrdemDeCompra> getById(String id){
         return repository.findById(id);

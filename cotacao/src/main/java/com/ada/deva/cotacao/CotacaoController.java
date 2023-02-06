@@ -13,16 +13,16 @@ import java.util.Optional;
 @RequestMapping("/cotacao")
 public class CotacaoController {
     private final CotacaoService service;
-
-
     @GetMapping("/{tipo_moeda}")
     public ResponseEntity<Cotacao> consultarCotacao(@PathVariable String tipo_moeda) {
+
         if (!(tipo_moeda.equals("EUR") || tipo_moeda.equals("USD"))) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Código da moeda inválido!");
         }
 
         Optional<Cotacao> cotacao = service.consultarCotacao(tipo_moeda);
         cotacao.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cotação não encontrada!"));
+
         Cotacao response = cotacao.get();
 
         return ResponseEntity.ok(response);

@@ -13,7 +13,7 @@ public class Cliente {
     @Id
     private String cpf;
     private String nome;
-    private LocalDate dataNascimento;
+    private String dataNascimento;
     private String estadoCivil;
     private String sexo;
     private String conta;

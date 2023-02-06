@@ -1,0 +1,9 @@
+package com.ada.deva.ordemdecompra;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface OrdemDeCompraRepository extends CrudRepository<OrdemDeCompra, String> {
+
+}

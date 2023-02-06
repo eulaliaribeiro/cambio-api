@@ -10,7 +10,7 @@ import static com.ada.deva.cadastro.DataUtil.formatarData;
 public class ClienteDTO {
     private final String cpf;
     private final String nome;
-    private LocalDate dataNascimento;
+    private String dataNascimento;
     private String estadoCivil;
     private String sexo;
 
@@ -32,6 +32,7 @@ public class ClienteDTO {
         entity.setDataNascimento(formatarData(String.valueOf(dataNascimento)));
         entity.setEstadoCivil(estadoCivil);
         entity.setSexo(sexo);
+        entity.setConta(conta);
         return entity;
     }
 }
