@@ -12,7 +12,6 @@ public class CotacaoService {
         CotacaoClient cotacaoClient = new CotacaoClient();
         CotacaoDTO cotacaoDto = cotacaoClient.getCotacao(tipo_moeda);
 
-
         Cotacao cotacao = new Cotacao(
                 cotacaoDto.getCode(),
                 cotacaoDto.getBid(),
