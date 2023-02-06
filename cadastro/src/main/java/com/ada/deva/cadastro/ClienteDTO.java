@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class ClienteDTO {
     private final String cpf;
     private final String nome;
-    private LocalDate dataNascimento;
+    private String dataNascimento;
     private String estadoCivil;
     private String sexo;
 
@@ -30,6 +30,7 @@ public class ClienteDTO {
         entity.setDataNascimento(dataNascimento);
         entity.setEstadoCivil(estadoCivil);
         entity.setSexo(sexo);
+        entity.setConta(conta);
         return entity;
     }
 }
