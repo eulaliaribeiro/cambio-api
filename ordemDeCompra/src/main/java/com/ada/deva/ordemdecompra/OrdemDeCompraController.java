@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
+import java.net.URI;
 import java.util.Random;
 
 
@@ -24,7 +24,7 @@ public class OrdemDeCompraController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID não informado!");
         }
         OrdemDeCompra entity = ordemDeCompraService.getById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não encontramos ordem de compra com ID informado."));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizada uma reserva com o ID informado!"));
         return ResponseEntity.ok(OrdemDeCompraDTO.of(entity));
     }
 //    @GetMapping("{tipoMoeda}/{conta}")
@@ -40,11 +40,15 @@ public class OrdemDeCompraController {
 
     @PostMapping(path = "", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public OrdemDeCompraDTO criarOrdemDeCompra(@RequestBody OrdemDeCompra ordemDeCompra) {
-            OrdemDeCompraDTO teste = ordemDeCompraService.salvarEmDTO(ordemDeCompra);
-            log.info("Info {}", ordemDeCompra);
-            return teste;
-
+    public ResponseEntity<Object> criarOrdemDeCompra(@RequestBody OrdemDeCompraDTO ordemDeCompra) {
+//            if(ordemDeCompra.getId_compra() == null){
+//                ordemDeCompra.setId_compra(new Random().nextLong());
+//            }
+        OrdemDeCompra ordemDeCompra1 = ordemDeCompraService.salvarEntity(ordemDeCompra);
+        log.info("Info {}", ordemDeCompra);
+        System.out.println(ordemDeCompra1);
+        System.out.println(ordemDeCompra);
+        return ResponseEntity.created(URI.create("api/ordemDeCompra/" + ordemDeCompra1.getId())).build();
     }
 }
 
