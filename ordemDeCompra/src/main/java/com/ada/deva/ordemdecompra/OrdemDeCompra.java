@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -14,8 +15,11 @@ public class OrdemDeCompra {
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id_compra;
     private String cpf_cliente;
+    private LocalDate dataSolicitacao;
     private String tipo_moeda;
     private double valorMoedaEstrangeira;
+    private Double valorCotacao;
+    private Double valorTotalOperacao;
     private String conta;
 
 //    public String getId() {
