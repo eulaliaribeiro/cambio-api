@@ -18,9 +18,9 @@ public class Cotacao {
     private Double valor_cotacao;
     private LocalDateTime dataSolicitacao;
 
-    public Cotacao(String tipoMoeda, Double valorCotacao, LocalDateTime dataSolicitacao) {
-        this.tipo_moeda = tipoMoeda;
-        this.valor_cotacao = valorCotacao;
+    public Cotacao(String tipo_moeda, Double valor_cotacao, LocalDateTime dataSolicitacao) {
+        this.tipo_moeda = tipo_moeda;
+        this.valor_cotacao = valor_cotacao;
         this.dataSolicitacao = dataSolicitacao;
 
     }
