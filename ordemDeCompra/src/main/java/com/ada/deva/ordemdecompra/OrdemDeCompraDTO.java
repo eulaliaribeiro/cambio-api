@@ -38,9 +38,9 @@ public class OrdemDeCompraDTO {
 
     public OrdemDeCompra toEntity(){
         OrdemDeCompra ordemDeCompra = new OrdemDeCompra();
-        ordemDeCompra.setId(id_compra);
-        ordemDeCompra.setCPF(cpf_cliente);
-        ordemDeCompra.setTipoMoeda(tipo_moeda);
+        ordemDeCompra.setId_compra(id_compra);
+        ordemDeCompra.setCpf_cliente(cpf_cliente);
+        ordemDeCompra.setTipo_moeda(tipo_moeda);
         ordemDeCompra.setValorMoedaEstrangeira(valor_moeda_estrangeira);
         ordemDeCompra.setConta(numero_agencia_retirada);
         return ordemDeCompra;

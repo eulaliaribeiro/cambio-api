@@ -12,9 +12,9 @@ import javax.persistence.Id;
 public class OrdemDeCompra {
     @Id @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
-    private String id;
-    private String CPF;
-    private String tipoMoeda;
+    private String id_compra;
+    private String cpf_cliente;
+    private String tipo_moeda;
     private double valorMoedaEstrangeira;
     private String conta;
 

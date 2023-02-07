@@ -46,16 +46,17 @@ public class OrdemDeCompraService {
 
     public OrdemDeCompraDTO salvarEmDTO(OrdemDeCompra ordemDeCompra){
         ClienteDTO cliente = clienteClient.getCadastro(ordemDeCompra.getConta());
-        Double valorCotacao = cotacaoClient.getCotacao(ordemDeCompra.getTipoMoeda()).getBid();
+        CotacaoDTO cotacao = cotacaoClient.getCotacao(ordemDeCompra.getTipo_moeda());
+        Double valorCotacao = cotacao.getValor_cotacao();
         ordemDeCompraDTO.setId_compra(String.valueOf(new Random().nextLong()));
-        ordemDeCompraDTO.setId_cliente(cliente.getCpf());
-        ordemDeCompraDTO.setCpf_cliente(ordemDeCompra.getCPF());
+        ordemDeCompraDTO.setId_cliente(cliente.getId_cliente());
+        ordemDeCompraDTO.setCpf_cliente(cliente.getCpf_cliente());
         ordemDeCompraDTO.setDataSolicitacao(LocalDateTime.now());
-        ordemDeCompraDTO.setTipo_moeda(ordemDeCompra.getTipoMoeda());
+        ordemDeCompraDTO.setTipo_moeda(ordemDeCompra.getTipo_moeda());
         ordemDeCompraDTO.setValor_moeda_estrangeira(ordemDeCompra.getValorMoedaEstrangeira());
         ordemDeCompraDTO.setNumero_agencia_retirada(ordemDeCompra.getConta());
         ordemDeCompraDTO.setValor_cotacao(valorCotacao);
-        if(ordemDeCompra.getTipoMoeda().equalsIgnoreCase("USD") || ordemDeCompra.getTipoMoeda().equalsIgnoreCase("EUR")){
+        if(ordemDeCompra.getTipo_moeda().equalsIgnoreCase("USD") || ordemDeCompra.getTipo_moeda().equalsIgnoreCase("EUR")){
             ordemDeCompraDTO.setValor_total_operacao(valorCotacao * ordemDeCompra.getValorMoedaEstrangeira());
         }
         return ordemDeCompraDTO;
