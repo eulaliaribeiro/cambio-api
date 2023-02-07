@@ -21,3 +21,7 @@ Sprint Review - Print do board com as tarefas efetivamente completadas na Sprint
 ![image](https://user-images.githubusercontent.com/68623425/217321860-69226599-2780-4374-a281-cfd13fdf3269.png)
 ![image](https://user-images.githubusercontent.com/68623425/217321942-e78c4387-b31a-402a-92ab-b84d8a4893c7.png)
 ![image](https://user-images.githubusercontent.com/68623425/217321989-6237e892-7084-46e5-b724-5613010c3b6b.png)
+
+Commits iniciais do módulo de cotação que não conseguimos fazer o push, foram integrados posteriormente:
+![image](https://user-images.githubusercontent.com/54278522/217358516-3dea1272-4c7e-4fe6-9dd3-784fb848b5b5.png)
+
