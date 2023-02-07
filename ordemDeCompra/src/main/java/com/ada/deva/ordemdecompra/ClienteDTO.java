@@ -10,7 +10,8 @@ import lombok.extern.jackson.Jacksonized;
 @AllArgsConstructor
 @Jacksonized
 public class ClienteDTO {
-    private String cpf;
+    private String id_cliente;
+    private String cpf_cliente;
     private String nome;
     private String dataNascimento;
     private String estadoCivil;

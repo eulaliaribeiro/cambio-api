@@ -1,8 +1,10 @@
 package com.ada.deva.cadastro;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
@@ -10,7 +12,9 @@ import java.time.LocalDate;
 @Data
 public class Cliente {
 
-    @Id
+    @Id @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    private String id;
     private String cpf;
     private String nome;
     private String dataNascimento;

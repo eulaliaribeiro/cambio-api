@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Random;
 
 @RequiredArgsConstructor
 @Service
@@ -21,7 +22,9 @@ public class ClienteService {
     }
 
     public void adicionar(Cliente entity) throws EntidadeDuplicadaException {
-        if (repository.existsById(entity.getCpf())) {
+        entity.setId(String.valueOf(new Random().nextLong()));
+
+        if (repository.existsById(entity.getId())) {
             throw new EntidadeDuplicadaException();
         }
         repository.save(entity);

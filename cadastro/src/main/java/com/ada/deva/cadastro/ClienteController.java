@@ -37,10 +37,10 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<Void> add(@RequestBody ClienteDTO cliente) {
-        if (cliente == null || cliente.getCpf() == null) {
+        if (cliente == null || cliente.getCpf_cliente() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O cliente informado é inválido.");
         }
-        String clearCpf = cliente.getCpf().replaceAll("[\\.-]", "");
+        String clearCpf = cliente.getCpf_cliente().replaceAll("[\\.-]", "");
         if (clearCpf.isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informado um cliente com CPF válido.");
         }
@@ -51,9 +51,9 @@ public class ClienteController {
             service.adicionar(cliente.toEntity());
         } catch (EntidadeDuplicadaException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Já existe uma pessoa com o CPF informado");
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro desconhecido");
-        }
+        } //catch (Exception e) {
+            //throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro desconhecido");
+       // }
         return ResponseEntity.created(URI.create("/api/cliente/" + clearCpf)).build();
     }
 }
