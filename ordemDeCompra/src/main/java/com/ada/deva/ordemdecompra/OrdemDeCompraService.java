@@ -19,7 +19,7 @@ public class OrdemDeCompraService {
     private final ClienteClient clienteClient;
     OrdemDeCompraDTO ordemDeCompraDTO = new OrdemDeCompraDTO();
 
-    public Optional<OrdemDeCompra> getById(String id) {
+    public Optional<OrdemDeCompra> getById(Long id) {
         return repository.findById(id);
     }
 

@@ -3,11 +3,11 @@ package com.ada.deva.ordemdecompra;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Random;
+import java.util.Optional;
 
 @Data
 public class OrdemDeCompraDTO {
-    private String id_compra;
+    private Long id_compra;
     
 
     private String id_cliente;
@@ -29,6 +29,7 @@ public class OrdemDeCompraDTO {
     public static OrdemDeCompraDTO of(OrdemDeCompra ordemDeCompra){
         OrdemDeCompraDTO dto = new OrdemDeCompraDTO();
         dto.setId_compra(ordemDeCompra.getId_compra());
+        dto.setId_cliente(ordemDeCompra.getId_cliente());
         dto.setId_cliente(ordemDeCompra.getCpf_cliente());
         dto.setDataSolicitacao(ordemDeCompra.getDataSolicitacao());
         dto.setTipo_moeda(ordemDeCompra.getTipo_moeda());

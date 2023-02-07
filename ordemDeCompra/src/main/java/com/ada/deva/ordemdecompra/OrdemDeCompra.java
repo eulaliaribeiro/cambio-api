@@ -4,7 +4,6 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
@@ -12,8 +11,7 @@ import java.time.LocalDateTime;
 @Data
 public class OrdemDeCompra {
     @Id
-    @GeneratedValue
-    private String id_compra;
+    private Long id_compra;
 
 
     private String id_cliente;

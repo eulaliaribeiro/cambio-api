@@ -7,23 +7,26 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
+import java.util.Random;
+
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/ordemDeCompra")
 @Slf4j
 public class OrdemDeCompraController {
-    private final OrdemDeCompraService service;
+    private final OrdemDeCompraService ordemDeCompraService;
 
-    @GetMapping("{id}")
-    public OrdemDeCompraDTO getById(@PathVariable String id) {
-        if (id == null || id.isBlank()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informado um ID!");
+    @GetMapping("/{id}")
+    public ResponseEntity<OrdemDeCompraDTO> findById(@PathVariable Long id) {
+        if (id == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID não informado!");
         }
-        OrdemDeCompra entity = service.getById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizada a compra com o ID informado!"));
-        return ResponseEntity.ok(OrdemDeCompraDTO.of(entity)).getBody();
-   }
+        OrdemDeCompra entity = ordemDeCompraService.getById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não encontramos ordem de compra com ID informado."));
+        return ResponseEntity.ok(OrdemDeCompraDTO.of(entity));
+    }
 //    @GetMapping("{tipoMoeda}/{conta}")
 //    public ResponseEntity<OrdemDeCompraDTO> getByContaETipoMoeda(@PathVariable String conta, @PathVariable String tipoMoeda) {
 //        if (conta == null || conta.isBlank()) {
@@ -38,7 +41,7 @@ public class OrdemDeCompraController {
     @PostMapping(path = "", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public OrdemDeCompraDTO criarOrdemDeCompra(@RequestBody OrdemDeCompra ordemDeCompra) {
-            OrdemDeCompraDTO teste = service.salvarEmDTO(ordemDeCompra);
+            OrdemDeCompraDTO teste = ordemDeCompraService.salvarEmDTO(ordemDeCompra);
             log.info("Info {}", ordemDeCompra);
             return teste;
 
