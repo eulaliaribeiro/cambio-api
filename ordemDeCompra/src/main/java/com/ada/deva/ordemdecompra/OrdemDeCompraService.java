@@ -1,6 +1,7 @@
 package com.ada.deva.ordemdecompra;
 
 
+import com.ada.deva.cadastro.Cliente;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +18,10 @@ public class OrdemDeCompraService {
     private final CotacaoClient cotacaoClient;
     private final ClienteClient clienteClient;
     OrdemDeCompraDTO ordemDeCompraDTO = new OrdemDeCompraDTO();
-    public Optional<OrdemDeCompra> getById(String id){
+
+    public Optional<OrdemDeCompra> getById(String id) {
         return repository.findById(id);
     }
-
-//    public OrdemDeCompraDTO add(OrdemDeCompraDTO entity){
-//        return repository.save(entity);
-//    }
 
 //    public Optional<OrdemDeCompraDTO> consultarCotacaoECliente(String tipoMoeda, String conta) {
 //        OrdemDeCompraClient ordemDeCompraClient = new OrdemDeCompraClient();

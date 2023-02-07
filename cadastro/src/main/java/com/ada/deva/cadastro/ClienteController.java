@@ -51,9 +51,9 @@ public class ClienteController {
             service.adicionar(cliente.toEntity());
         } catch (EntidadeDuplicadaException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Já existe uma pessoa com o CPF informado");
-        } //catch (Exception e) {
-            //throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro desconhecido");
-       // }
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro desconhecido");
+        }
         return ResponseEntity.created(URI.create("/api/cliente/" + clearCpf)).build();
     }
 }
