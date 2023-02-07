@@ -1,9 +1,10 @@
 package com.ada.deva.ordemdecompra;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
@@ -11,8 +12,8 @@ import java.time.LocalDateTime;
 @Data
 public class OrdemDeCompra {
     @Id
-    private Long id_compra;
-
+    @GeneratedValue
+    private Long id;
 
     private String id_cliente;
 
