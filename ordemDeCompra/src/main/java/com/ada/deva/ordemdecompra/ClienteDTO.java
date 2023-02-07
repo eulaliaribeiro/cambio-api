@@ -18,30 +18,4 @@ public class ClienteDTO {
     private String sexo;
 
     private String conta;
-
-
-
-//    public ClienteDTO(String cpf, String nome) {
-//
-//    }
-//
-//    public static ClienteDTO of(Cliente cliente) {
-//        ClienteDTO dto = new ClienteDTO(cliente.getCpf(), cliente.getNome());
-//        dto.dataNascimento = cliente.getDataNascimento();
-//        dto.estadoCivil = cliente.getEstadoCivil();
-//        dto.sexo = cliente.getSexo();
-//        dto.conta = cliente.getConta();
-//        return dto;
-//    }
-//
-//    public Cliente toEntity() {
-//        Cliente entity = new Cliente();
-//        entity.setCpf(cpf);
-//        entity.setNome(nome);
-//        entity.setDataNascimento(String.valueOf(dataNascimento));
-//        entity.setEstadoCivil(estadoCivil);
-//        entity.setSexo(sexo);
-//        entity.setConta(conta);
-//        return entity;
-//    }
 }

@@ -31,18 +31,4 @@ public class OrdemDeCompraDTO {
         return dto;
     }
 
-    public OrdemDeCompra toEntity(){
-        OrdemDeCompra ordemDeCompra = new OrdemDeCompra();
-        ordemDeCompra.setId(id_compra);
-        ordemDeCompra.setId_cliente(id_cliente);
-        ordemDeCompra.setCpf_cliente(cpf_cliente);
-        ordemDeCompra.setDataSolicitacao(dataSolicitacao);
-        ordemDeCompra.setTipo_moeda(tipo_moeda);
-        ordemDeCompra.setValor_cotacao(valor_cotacao);
-        ordemDeCompra.setValor_moeda_estrangeira(valor_moeda_estrangeira);
-        ordemDeCompra.setValor_total_operacao(valor_total_operacao);
-        ordemDeCompra.setConta(conta);
-        return ordemDeCompra;
-    }
-
 }

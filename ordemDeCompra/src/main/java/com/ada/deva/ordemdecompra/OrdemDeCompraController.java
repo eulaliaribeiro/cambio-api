@@ -27,23 +27,13 @@ public class OrdemDeCompraController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizada uma reserva com o ID informado!"));
         return ResponseEntity.ok(OrdemDeCompraDTO.of(entity));
     }
-//    @GetMapping("{tipoMoeda}/{conta}")
-//    public ResponseEntity<OrdemDeCompraDTO> getByContaETipoMoeda(@PathVariable String conta, @PathVariable String tipoMoeda) {
-//        if (conta == null || conta.isBlank()) {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informado a Conta!");
-//        }
-//        OrdemDeCompraDTO entity = service.consultarCotacaoECliente(tipoMoeda, conta)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizada um compra com essas informações!"));
-//        return ResponseEntity.ok(OrdemDeCompraDTO.of(entity.toEntity()));
-
-//    }
 
     @PostMapping(path = "", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Object> criarOrdemDeCompra(@RequestBody OrdemDeCompraDTO ordemDeCompra) {
-//            if(ordemDeCompra.getId_compra() == null){
-//                ordemDeCompra.setId_compra(new Random().nextLong());
-//            }
+            if(ordemDeCompra.getId_compra() == null){
+                ordemDeCompra.setId_compra(new Random().nextLong());
+            }
         OrdemDeCompra ordemDeCompra1 = ordemDeCompraService.salvarEntity(ordemDeCompra);
         log.info("Info {}", ordemDeCompra);
         System.out.println(ordemDeCompra1);
