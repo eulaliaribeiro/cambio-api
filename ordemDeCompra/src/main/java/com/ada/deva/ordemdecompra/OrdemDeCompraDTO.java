@@ -3,6 +3,7 @@ package com.ada.deva.ordemdecompra;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 @Data
 public class OrdemDeCompraDTO {
@@ -25,16 +26,15 @@ public class OrdemDeCompraDTO {
 
 //    public OrdemDeCompraDTO(String id_compra, String id_cliente, String cpf_cliente, String tipo_moeda, Double valor_moeda_estrangeira, Double valor_cotacao, LocalDateTime dataSolicitacao, String numero_agencia_retirada) {
 //    }
-
     public static OrdemDeCompraDTO of(OrdemDeCompra ordemDeCompra){
         OrdemDeCompraDTO dto = new OrdemDeCompraDTO();
         dto.setId_compra(ordemDeCompra.getId_compra());
         dto.setId_cliente(ordemDeCompra.getCpf_cliente());
-        dto.setDataSolicitacao(ordemDeCompra.getDataSolicitacao().atStartOfDay());
+        dto.setDataSolicitacao(ordemDeCompra.getDataSolicitacao());
         dto.setTipo_moeda(ordemDeCompra.getTipo_moeda());
-        dto.setValor_cotacao(ordemDeCompra.getValorCotacao());
-        dto.setValor_moeda_estrangeira(ordemDeCompra.getValorMoedaEstrangeira());
-        dto.setValor_total_operacao(ordemDeCompra.getValorTotalOperacao());
+        dto.setValor_cotacao(ordemDeCompra.getValor_cotacao());
+        dto.setValor_moeda_estrangeira(ordemDeCompra.getValor_moeda_estrangeira());
+        dto.setValor_total_operacao(ordemDeCompra.getValor_total_operacao());
         dto.setConta(ordemDeCompra.getConta());
         return dto;
     }
@@ -44,7 +44,7 @@ public class OrdemDeCompraDTO {
         ordemDeCompra.setId_compra(id_compra);
         ordemDeCompra.setCpf_cliente(cpf_cliente);
         ordemDeCompra.setTipo_moeda(tipo_moeda);
-        ordemDeCompra.setValorMoedaEstrangeira(valor_moeda_estrangeira);
+        ordemDeCompra.setValor_moeda_estrangeira(valor_moeda_estrangeira);
         ordemDeCompra.setConta(conta);
         return ordemDeCompra;
     }

@@ -46,16 +46,16 @@ public class OrdemDeCompraService {
         ClienteDTO cliente = clienteClient.getCadastro(ordemDeCompra.getConta());
         CotacaoDTO cotacao = cotacaoClient.getCotacao(ordemDeCompra.getTipo_moeda());
         Double valorCotacao = cotacao.getValor_cotacao();
-        ordemDeCompraDTO.setId_compra(String.valueOf(new Random().nextLong()));
+        ordemDeCompraDTO.setId_compra(ordemDeCompra.getId_compra());
         ordemDeCompraDTO.setId_cliente(cliente.getId_cliente());
         ordemDeCompraDTO.setCpf_cliente(cliente.getCpf_cliente());
         ordemDeCompraDTO.setDataSolicitacao(LocalDateTime.now());
         ordemDeCompraDTO.setTipo_moeda(ordemDeCompra.getTipo_moeda());
-        ordemDeCompraDTO.setValor_moeda_estrangeira(ordemDeCompra.getValorMoedaEstrangeira());
+        ordemDeCompraDTO.setValor_moeda_estrangeira(ordemDeCompra.getValor_moeda_estrangeira());
         ordemDeCompraDTO.setConta(ordemDeCompra.getConta());
         ordemDeCompraDTO.setValor_cotacao(valorCotacao);
         if(ordemDeCompra.getTipo_moeda().equalsIgnoreCase("USD") || ordemDeCompra.getTipo_moeda().equalsIgnoreCase("EUR")){
-            ordemDeCompraDTO.setValor_total_operacao(valorCotacao * ordemDeCompra.getValorMoedaEstrangeira());
+            ordemDeCompraDTO.setValor_total_operacao(valorCotacao * ordemDeCompra.getValor_moeda_estrangeira());
         }
         return ordemDeCompraDTO;
     }
