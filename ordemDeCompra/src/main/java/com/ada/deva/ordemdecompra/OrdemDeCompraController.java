@@ -38,8 +38,17 @@ public class OrdemDeCompraController {
     @PostMapping(path = "", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public OrdemDeCompraDTO criarOrdemDeCompra(@RequestBody OrdemDeCompra ordemDeCompra) {
+        if(ordemDeCompra.getId_compra().isBlank() || ordemDeCompra.getTipo_moeda().isBlank() || ordemDeCompra.getValorMoedaEstrangeira() == 0 || ordemDeCompra.getConta().isBlank()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Todos os campos precism estar preenchidos");
+        }
+        try{
             OrdemDeCompraDTO teste = service.salvarEmDTO(ordemDeCompra);
             log.info("Info {}", ordemDeCompra);
             return teste;
+        }catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro desconhecido");
+        }
+
     }
 }
+
