@@ -1,6 +1,7 @@
 package com.ada.deva.ordemdecompra;
 
 
+import com.ada.deva.cadastro.Cliente;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +18,10 @@ public class OrdemDeCompraService {
     private final CotacaoClient cotacaoClient;
     private final ClienteClient clienteClient;
     OrdemDeCompraDTO ordemDeCompraDTO = new OrdemDeCompraDTO();
-    public Optional<OrdemDeCompra> getById(String id){
+
+    public Optional<OrdemDeCompra> getById(String id) {
         return repository.findById(id);
     }
-
-//    public OrdemDeCompraDTO add(OrdemDeCompraDTO entity){
-//        return repository.save(entity);
-//    }
 
 //    public Optional<OrdemDeCompraDTO> consultarCotacaoECliente(String tipoMoeda, String conta) {
 //        OrdemDeCompraClient ordemDeCompraClient = new OrdemDeCompraClient();
@@ -54,7 +52,7 @@ public class OrdemDeCompraService {
         ordemDeCompraDTO.setDataSolicitacao(LocalDateTime.now());
         ordemDeCompraDTO.setTipo_moeda(ordemDeCompra.getTipo_moeda());
         ordemDeCompraDTO.setValor_moeda_estrangeira(ordemDeCompra.getValorMoedaEstrangeira());
-        ordemDeCompraDTO.setNumero_agencia_retirada(ordemDeCompra.getConta());
+        ordemDeCompraDTO.setConta(ordemDeCompra.getConta());
         ordemDeCompraDTO.setValor_cotacao(valorCotacao);
         if(ordemDeCompra.getTipo_moeda().equalsIgnoreCase("USD") || ordemDeCompra.getTipo_moeda().equalsIgnoreCase("EUR")){
             ordemDeCompraDTO.setValor_total_operacao(valorCotacao * ordemDeCompra.getValorMoedaEstrangeira());

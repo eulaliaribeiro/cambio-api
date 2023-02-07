@@ -25,10 +25,6 @@ public class CotacaoService {
 
     }
 
-    public Double valorCotacao(String tipo_moeda){
-        CotacaoDTO cotacaoDto = cotacaoClient.getCotacao(tipo_moeda);
-        return cotacaoDto.getLow();
-    }
 
 
 

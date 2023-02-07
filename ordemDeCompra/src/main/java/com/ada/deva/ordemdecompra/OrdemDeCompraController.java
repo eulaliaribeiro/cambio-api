@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import java.net.URI;
 
 
 @RequiredArgsConstructor
@@ -16,19 +15,15 @@ import java.net.URI;
 public class OrdemDeCompraController {
     private final OrdemDeCompraService service;
 
-//    @GetMapping("{id}")
-//    public OrdemDeCompraDTO getById(@PathVariable String id) {
-//        if (id == null || id.isBlank()) {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informado um ID!");
-//        }
-//        OrdemDeCompra entity = service.getById(id)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizada a compra com o ID informado!"));
-//        var tipoMoeda = entity.getTipoMoeda();
-//        var conta = entity.getNumeroAgencia();
-//        OrdemDeCompraDTO entityDTO = service.consultarCotacaoECliente(tipoMoeda, conta)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizada um compra com essas informações!"));
-//        return entityDTO;
-//    }
+    @GetMapping("{id}")
+    public OrdemDeCompraDTO getById(@PathVariable String id) {
+        if (id == null || id.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi informado um ID!");
+        }
+        OrdemDeCompra entity = service.getById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi localizada a compra com o ID informado!"));
+        return ResponseEntity.ok(OrdemDeCompraDTO.of(entity)).getBody();
+   }
 //    @GetMapping("{tipoMoeda}/{conta}")
 //    public ResponseEntity<OrdemDeCompraDTO> getByContaETipoMoeda(@PathVariable String conta, @PathVariable String tipoMoeda) {
 //        if (conta == null || conta.isBlank()) {
