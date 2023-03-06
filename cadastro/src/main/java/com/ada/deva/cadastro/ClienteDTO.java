@@ -2,10 +2,6 @@ package com.ada.deva.cadastro;
 
 import lombok.Data;
 
-import java.time.LocalDate;
-
-import static com.ada.deva.cadastro.DataUtil.formatarData;
-
 @Data
 public class ClienteDTO {
 
@@ -31,7 +27,7 @@ public class ClienteDTO {
         entity.setId(id_cliente);
         entity.setCpf(cpf_cliente);
         entity.setNome(nome);
-        entity.setDataNascimento(String.valueOf(dataNascimento));
+        entity.setDataNascimento(dataNascimento);
         entity.setEstadoCivil(estadoCivil);
         entity.setSexo(sexo);
         entity.setConta(conta);

@@ -28,46 +28,4 @@ public class OrdemDeCompra {
     private LocalDateTime dataSolicitacao;
     private String conta;
 
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
-//
-//    public String getCPF() {
-//        return CPF;
-//    }
-//
-//    public void setCPF(String CPF) {
-//        this.CPF = CPF;
-//    }
-//
-//
-//    public String getTipoMoeda() {
-//        return tipoMoeda;
-//    }
-//
-//    public void setTipoMoeda(String tipoMoeda) {
-//        this.tipoMoeda = tipoMoeda;
-//    }
-//
-//    public double getValorMoedaEstrangeira() {
-//        return valorMoedaEstrangeira;
-//    }
-//
-//    public void setValorMoedaEstrangeira(double valorMoedaEstrangeira) {
-//        this.valorMoedaEstrangeira = valorMoedaEstrangeira;
-//    }
-//
-//    public String getNumeroAgencia() {
-//        return numeroAgencia;
-//    }
-//
-//    public void setNumeroAgencia(String numeroAgencia) {
-//        this.numeroAgencia = numeroAgencia;
-//    }
-//
-
 }
